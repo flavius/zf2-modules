@@ -1,8 +1,8 @@
 <?php
 return array(
     'modules' => array(
-        'Application',
         'Guestbook',
+        'Application',
     ),
     'module_listener_options' => array(
         'config_cache_enabled' => false,

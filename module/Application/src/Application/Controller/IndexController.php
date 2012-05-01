@@ -10,7 +10,7 @@ class IndexController extends ActionController
     public function indexAction()
     {
         $sidebar = new ViewModel(array('type' => 'foo'));
-        $sidebar->setTemplate('sidebar/sidebar');
+        $sidebar->setTemplate('sidebar/latest');
 
         $template = $sidebar->getTemplate();
         $variables = $sidebar->getVariables();
