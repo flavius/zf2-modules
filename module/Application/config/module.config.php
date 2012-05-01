@@ -121,6 +121,22 @@ return array(
                     'exceptionTemplate' => 'error/index',
                 ),
             ),
+            // Database
+            'Zend\Db\Adapter\Adapter' => array(
+                'parameters' => array(
+                    'driver' => 'Zend\Db\Adapter\Driver\Pdo\Pdo',
+                ),
+            ),
+            'Zend\Db\Adapter\Driver\Pdo\Pdo' => array(
+                'parameters' => array(
+                    'connection' => 'Zend\Db\Adapter\Driver\Pdo\Connection',
+                ),
+            ),
+            'Zend\Db\Adapter\Driver\Pdo\Connection' => array(
+                'parameters' => array(
+                    'connectionInfo' => 'masterdb',
+                ),
+            ),
         ),
     ),
 );

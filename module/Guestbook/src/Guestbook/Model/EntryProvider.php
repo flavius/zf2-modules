@@ -1,40 +1,48 @@
 <?php
 namespace Guestbook\Model;
 
-class EntryProvider implements \Iterator {
+class EntryProvider implements \Iterator, \Zend\Loader\LocatorAware {
 
     protected $shortentries = NULL;
-    protected $data;
 
-    private $pos = 0;
+    protected $dbconnection;
+    protected $locator;
 
-    public function __construct($shortentries=NULL) {
-        $this->shortentries = $shortentries;
+    protected $stmt;
 
-        $this->data = array('foo', 'bar', 'a', 'b', 'c');
-    }
+    protected $row;
+
+    protected $pos=0;
 
     public function setShortentries($shortentries) {
         $this->shortentries = $shortentries;
     }
+    public function setDbconnection($dbconnection) {
+        $this->dbconnection = $dbconnection;
+    }
 
     public function current() {
-        return $this->data[$this->pos];
+        return $this->row;
     }
     public function key() {
-        return $this->pos;
+        $this->row['gb_entry_id'];
     }
     public function next() {
+        $this->row = $this->stmt->fetch(\PDO::FETCH_ASSOC, \PDO::FETCH_ORI_REL, 1);
         $this->pos++;
     }
     public function rewind() {
-        //TODO here fetch data from DB
+        $this->stmt = $this->dbconnection->query('SELECT * FROM entries');//TODO LIMIT, order by, etc
+        $this->row = $this->stmt->fetch(\PDO::FETCH_ASSOC, \PDO::FETCH_ORI_REL, 0);
         $this->pos = 0;
     }
     public function valid() {
-        if($this->shortentries) {
-            return isset($this->data[$this->pos]) && $this->pos < $this->shortentries;
-        }
-        return isset($this->data[$this->pos]);
+        return (bool)$this->row && $this->pos < $this->shortentries;
+    }
+    public function getLocator() {
+        return $this->locator;
+    }
+    public function setLocator(\Zend\Di\Locator $locator) {
+        $this->locator = $locator;
     }
 }

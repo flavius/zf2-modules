@@ -39,6 +39,7 @@ return array(
             'Guestbook\Model\EntryProvider' => array(
                 'parameters' => array(
                     'shortentries' => 5,
+                    'dbconnection' => 'masterdb',
                 ),
             ),
 
