@@ -36,7 +36,7 @@ return array(
 
             'Guestbook\Model\EntryProvider' => array(
                 'parameters' => array(
-                    'shortentries' => 3,
+                    'shortentries' => 5,
                 ),
             ),
 

@@ -9,7 +9,7 @@ $sharedEvents     = new Zend\EventManager\SharedEventManager();
 $listenerOptions  = new Zend\Module\Listener\ListenerOptions($appConfig['module_listener_options']);
 $defaultListeners = new Zend\Module\Listener\DefaultListenerAggregate($listenerOptions);
 $defaultListeners->getConfigListener()->addConfigGlobPath("config/autoload/*.php");
-    
+
 
 $moduleManager = new Zend\Module\Manager($appConfig['modules']);
 $events        = $moduleManager->events();
@@ -18,7 +18,9 @@ $events->attach($defaultListeners);
 $moduleManager->loadModules();
 
 // Create application, bootstrap, and run
-$bootstrap   = new Zend\Mvc\Bootstrap($defaultListeners->getConfigListener()->getMergedConfig());
+$config = $defaultListeners->getConfigListener()->getMergedConfig();
+//var_dump($config->toArray()); exit;
+$bootstrap   = new Zend\Mvc\Bootstrap($config);
 $bootstrap->events()->setSharedCollections($sharedEvents);
 $application = new Zend\Mvc\Application;
 $bootstrap->bootstrap($application);
