@@ -9,14 +9,12 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-        $sidebar = new ViewModel(array('type' => 'foo'));
+        $entries = $this->getLocator()->get('Guestbook\Model\EntryProvider', array('shortentries' => 2));
+        //$entries = $this->getLocator()->get('Guestbook\Model\EntryProvider');
+        $sidebar = new ViewModel(compact('entries'));
         $sidebar->setTemplate('sidebar/latest');
 
-        $template = $sidebar->getTemplate();
-        $variables = $sidebar->getVariables();
-        $children = $sidebar->getChildren();
-
-        $view = new ViewModel(array('vars' => compact('template', 'variables', 'children')));
+        $view = new ViewModel();
         $view->addChild($sidebar, 'sidebar');
 
         return $view;

@@ -34,6 +34,12 @@ return array(
                 ),
             ),
 
+            'Guestbook\Model\EntryProvider' => array(
+                'parameters' => array(
+                    'shortentries' => 3,
+                ),
+            ),
+
             // Defining where to look for views. This works with multiple paths,
             // very similar to include_path
             'Zend\View\Resolver\TemplatePathStack' => array(

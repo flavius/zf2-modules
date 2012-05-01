@@ -1,5 +1,6 @@
 <h3>Latest entries</h3>
 <ul>
-    <li>a</li>
-    <li>b</li>
+    <?php foreach($entries as $entry) {
+        echo '<li>', $entry, '</li>';
+    } ?>
 </ul>
