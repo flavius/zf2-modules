@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Controller;
+namespace Guestbook\Controller;
 
 use Zend\Mvc\Controller\ActionController,
     Zend\View\Model\ViewModel;
