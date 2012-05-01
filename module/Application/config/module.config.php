@@ -25,6 +25,7 @@ return array(
                     'routes' => array(
                         'default' => array(
                             'type'    => 'Zend\Mvc\Router\Http\Segment',
+                            'priority' => 999,
                             'options' => array(
                                 'route'    => '/[:controller[/:action]]',
                                 'constraints' => array(
@@ -39,6 +40,7 @@ return array(
                         ),
                         'home' => array(
                             'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'priority' => 999,
                             'options' => array(
                                 'route'    => '/',
                                 'defaults' => array(
@@ -53,7 +55,7 @@ return array(
 
             // Setup for the view layer.
 
-            // Using the PhpRenderer, which just handles html produced by php 
+            // Using the PhpRenderer, which just handles html produced by php
             // scripts
             'Zend\View\Renderer\PhpRenderer' => array(
                 'parameters' => array(

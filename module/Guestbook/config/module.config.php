@@ -8,6 +8,7 @@ return array(
                     'routes' => array(
                         'guestbook_default' => array(
                             'type'    => 'Zend\Mvc\Router\Http\Segment',
+                            'priority' => 1000,
                             'options' => array(
                                 'route'    => '/guestbook/[:controller[/:action]]',
                                 'constraints' => array(
@@ -22,6 +23,7 @@ return array(
                         ),
                         'guestbook_home' => array(
                             'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'priority' => 1000,
                             'options' => array(
                                 'route'    => '/guestbook/',
                                 'defaults' => array(
