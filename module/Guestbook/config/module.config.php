@@ -32,6 +32,17 @@ return array(
                                 ),
                             ),
                         ),
+                        'guestbook_view' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'priority' => 1000,
+                            'options' => array(
+                                'route'    => '/guestbook/view[/:id]',
+                                'defaults' => array(
+                                    'controller' => 'Guestbook\Controller\IndexController',
+                                    'action'     => 'view',
+                                ),
+                            ),
+                        ),
                     ),
                 ),
             ),

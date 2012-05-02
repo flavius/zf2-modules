@@ -25,14 +25,14 @@ class EntryProvider implements \Iterator, \Zend\Loader\LocatorAware {
         return $this->row;
     }
     public function key() {
-        $this->row['gb_entry_id'];
+        $this->row['id'];
     }
     public function next() {
         $this->row = $this->stmt->fetch(\PDO::FETCH_ASSOC, \PDO::FETCH_ORI_REL, 1);
         $this->pos++;
     }
     public function rewind() {
-        $this->stmt = $this->dbconnection->query('SELECT * FROM entries');//TODO LIMIT, order by, etc
+        $this->stmt = $this->dbconnection->query('SELECT gb_entry_id as id, text, date FROM entries');//TODO LIMIT, order by, etc
         $this->row = $this->stmt->fetch(\PDO::FETCH_ASSOC, \PDO::FETCH_ORI_REL, 0);
         $this->pos = 0;
     }

@@ -1,6 +1,13 @@
 <h3>Latest entries</h3>
 <ul>
-    <?php foreach($entries as $entry) {
-        echo '<li>', $entry['text'], '</li>';
+<?php
+foreach($entries as $id => $entry) {
+        echo '<li>';
+        echo '<a href="',
+            $this->url('guestbook_view',
+                array('controller' => 'index', 'action' => 'view', 'id' => $entry['id'])
+            ),
+            '">', $entry['text'],'</a>';
+        echo '</li>';
     } ?>
 </ul>
