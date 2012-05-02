@@ -50,7 +50,7 @@ return array(
             'Guestbook\Model\EntryProvider' => array(
                 'parameters' => array(
                     'shortentries' => 5,
-                    'dbconnection' => 'masterdb',
+                    //'dbconnection' => 'masterdb', //TODO I don't want it injected
                 ),
             ),
 

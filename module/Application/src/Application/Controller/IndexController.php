@@ -9,7 +9,12 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-        $entries = $this->getLocator()->get('Guestbook\Model\EntryProvider', array('shortentries' => 2));
+        try {
+            $entries = $this->getLocator()->get('Guestbook\Model\EntryProvider', array('shortentries' => 2));
+        }
+        catch(\PDOException $e) {
+            $entries = array();
+        }
         //$entries = $this->getLocator()->get('Guestbook\Model\EntryProvider');
         $sidebar = new ViewModel(compact('entries'));
         $sidebar->setTemplate('sidebar/latest');

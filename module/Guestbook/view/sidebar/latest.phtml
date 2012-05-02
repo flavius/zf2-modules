@@ -1,6 +1,7 @@
 <h3>Latest entries</h3>
 <ul>
 <?php
+//try {
 foreach($entries as $id => $entry) {
         echo '<li>';
         echo '<a href="',
@@ -9,5 +10,8 @@ foreach($entries as $id => $entry) {
             ),
             '">', $entry['text'],'</a>';
         echo '</li>';
-    } ?>
+}
+//} catch(\PDOException $e) {
+//}
+?>
 </ul>
